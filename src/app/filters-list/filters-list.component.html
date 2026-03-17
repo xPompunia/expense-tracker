@@ -1,0 +1,18 @@
+  <div class="filters">
+    <ul>
+      <li
+        [class.active]="selectedCategory === 'Wszystkie'"
+        (click)="onFilterChange('Wszystkie')"
+      >
+        Wszystkie
+      </li>
+      @for (cat of categories; track cat) {
+        <li
+          [class.active]="selectedCategory === cat"
+          (click)="onFilterChange(cat)"
+        >
+          {{ cat }}
+        </li>
+      }
+    </ul>
+  </div>

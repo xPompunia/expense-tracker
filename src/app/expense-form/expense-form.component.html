@@ -1,0 +1,14 @@
+<div class="add-expense-form">
+  <input
+    type="text"
+    [(ngModel)]="newDescription"
+    placeholder="Opis wydatku (np. Kawa)"
+  />
+  <input type="number" [(ngModel)]="newAmount" placeholder="Kwota" />
+  <select [(ngModel)]="newCategory">
+    @for (cat of categories; track cat) {
+      <option [value]="cat">{{ cat }}</option>
+    }
+  </select>
+  <button (click)="submitForm()">Dodaj</button>
+</div>

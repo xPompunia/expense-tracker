@@ -1,0 +1,25 @@
+<div class="expense-list">
+  @if (expenses.length === 0) {
+    <p class="empty-state">
+      Brak wydatków. Dodaj swój pierwszy wydatek powyżej!
+    </p>
+  } @else {
+    <ul>
+      @for (expense of expenses; track expense.id) {
+        <li class="expense-item">
+          <div class="expense-info">
+            <span class="desc">{{ expense.description }}</span>
+            <span class="category">{{ expense.category }}</span>
+            <span class="date">{{ expense.date | date: "shortDate" }}</span>
+          </div>
+          <div class="expense-action">
+            <span class="amount">{{ expense.amount | currency: "PLN" }}</span>
+            <button class="delete-btn" (click)="onDeleteClick(expense.id)">
+              ✕
+            </button>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+</div>
