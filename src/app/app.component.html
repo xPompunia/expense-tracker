@@ -1,6 +1,14 @@
 <div class="container">
   <app-expense-header [totalExpenses]="totalExpenses"></app-expense-header>
 
+  @if (errorMessage) {
+    <p class="api-error">{{ errorMessage }}</p>
+  }
+
+  @if (isLoading) {
+    <div class="loading-box">Ladowanie danych...</div>
+  }
+
   <app-filters-list
     [categories]="categories"
     [selectedCategory]="filterCategory"

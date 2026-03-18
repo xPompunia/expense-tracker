@@ -57,3 +57,64 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Run Full Stack In Docker
+
+The project includes Docker setup for:
+
+- PostgreSQL database
+- Spring Boot backend
+- Angular frontend
+
+### Start all services
+
+From the project root directory run:
+
+```bash
+docker compose up --build
+```
+
+If you are on macOS and using Colima, start Docker daemon first:
+
+```bash
+colima start
+```
+
+Services:
+
+- Frontend: http://localhost:4200
+- Backend API: http://localhost:8080/api/expenses
+- PostgreSQL: localhost:5432
+- H2 console is disabled in docker because backend runs with postgres profile.
+
+### Stop services
+
+```bash
+docker compose down
+```
+
+To remove database volume as well:
+
+```bash
+docker compose down -v
+```
+
+### Logs and troubleshooting
+
+Check all logs:
+
+```bash
+docker compose logs -f
+```
+
+Check only backend logs:
+
+```bash
+docker compose logs -f backend
+```
+
+### Notes
+
+- Backend container uses `SPRING_PROFILES_ACTIVE=postgres`.
+- Database credentials are defined in `docker-compose.yml` and can be changed there.
+- Frontend in browser still calls `http://localhost:8080`, which works with this compose setup.

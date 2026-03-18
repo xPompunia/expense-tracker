@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-expense-header',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './expense-header.component.html',
   styleUrl: './expense-header.component.css',
